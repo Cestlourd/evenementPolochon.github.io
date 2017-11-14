@@ -1,0 +1,14 @@
+.masthead {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 200px 0;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+    background: url("../img/champMars.JPG") no-repeat bottom center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; }
