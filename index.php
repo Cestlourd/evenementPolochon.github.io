@@ -27,7 +27,8 @@ session_start();
     <!-- Fichiers JS -->
 
     <script src="js/googleMap.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuIIpLcse3ijTlt22e6uXO1ZmH6XcWR0Q&callback=initMap"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuIIpLcse3ijTlt22e6uXO1ZmH6XcWR0Q&callback=initMap"></script>
 
 </head>
 <body>
@@ -47,51 +48,86 @@ session_start();
     <div class="row">
         <main>
             <section id="FormulaireInscription">
-                <form name="form_inscription" method="post" action="inscription.php">
 
-                    <div class="row form-group">
-                        <div class="col-xs-12 col-md-offset-2 col-md-1">
-                            <label for="nomParticipant">Nom</label>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <input type="text" class="form-control" id="nomParticipant" placeholder="Nom...">
-                        </div>
-                    </div>
+                <?php
+                if (isset($_GET["success"])): ?>
+                <div class="row">
+                    <h2 class="alert alert-success"><?php echo $_GET["success"]; ?></h2>
+                    <?php
+                    endif;
+                    ?>
 
-                    <div class="row form-group">
-                        <div class="col-xs-12 col-md-offset-2 col-md-1">
-                            <label for="prenomParticipant">Prenom</label>
+                    <?php
+                    if (isset($_GET['errors'])): ?>
+                        <div class="row">
+                            <h2 class="text-danger"> Veuillez remplir les champs suivants :</h2>
+                            <ul class="list-group">
+                                <?php foreach ($_GET['errors'] as $error): ?>
+                                    <li class="list-group-item list-group-item-danger"><?php echo $error; ?></li>
+                                <?php endforeach; ?>
+                            </ul>
                         </div>
-                        <div class="col-xs-12 col-md-6">
-                            <input type="text" class="form-control" id="prenomParticipant" placeholder="Prenom...">
-                        </div>
-                    </div>
+                        <?php
+                    endif;
+                    ?>
+                    <form name="form_inscription" method="post" action="inscription.php">
 
-                    <div class="row form-group">
-                        <div class="col-xs-12 col-md-offset-2 col-md-1">
-                            <label for="emailParticipant">Email</label>
+                        <div class="row form-group">
+                            <div class="col-xs-12 col-md-offset-2 col-md-1">
+                                <label for="nomParticipant">Nom</label>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <input type="text" class="form-control" name="nomParticipant" placeholder="Nom..."
+                                       value="<?php echo isset($_GET['nom']) ? $_GET['nom'] : '' ?>">
+                            </div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
-                            <input type="email" class="form-control" id="emailParticipant" placeholder="Email...">
-                        </div>
-                    </div>
 
-                    <div class=" row form-group">
-                        <div class="col-xs-12 col-md-offset-2 col-md-1">
-                            <label for="telephoneParticipant">Telephone</label>
+                        <div class="row form-group">
+                            <div class="col-xs-12 col-md-offset-2 col-md-1">
+                                <label for="prenomParticipant">Prenom</label>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <input type="text" class="form-control" name="prenomParticipant" placeholder="Prenom..."
+                                       value="<?php echo isset($_GET['prenom']) ? $_GET['prenom'] : '' ?>">
+                            </div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
-                            <input type="text" name="telephone" class="form-control" id="telephoneParticipant"
-                                   placeholder="Enter Phone Number">
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-xs-12 col-md-offset-5 col-md-2">
-                            <input type="submit" value="Participer" onclick="return val();"/>
+                        <div class="row form-group">
+                            <div class="col-xs-12 col-md-offset-2 col-md-1">
+                                <label for="emailParticipant">Email</label>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <input type="email" class="form-control" name="emailParticipant" placeholder="Email..."
+                                       value="<?php echo isset($_GET['email']) ? $_GET['email'] : '' ?>">
+                            </div>
                         </div>
-                    </div>
-                </form>
+
+                        <div class=" row form-group">
+                            <div class="col-xs-12 col-md-offset-2 col-md-1">
+                                <label for="telephoneParticipant">Telephone</label>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <input type="text" class="form-control" name="telephoneParticipant"
+                                       placeholder="Enter Phone Number"
+                                       value="<?php echo isset($_GET['tel']) ? $_GET['tel'] : '' ?>">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-offset-2 col-md-6">
+                                <label for="coding">Vous venez avec votre propre polochon?</label>
+                                <input type="checkbox" id="polochon" name="polochon" value="polochon">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-offset-5 col-md-2">
+                                <input type="submit" value="Participer" onclick="return val();"/>
+                            </div>
+                        </div>
+
+
+                    </form>
             </section>
 
             <section id="lieu">
