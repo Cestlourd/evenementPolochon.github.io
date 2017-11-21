@@ -39,7 +39,7 @@ try {
 
             $report = http_build_query($data);
 
-            header('Location: index.php?' . $report);
+            header('Location: index.html.php?' . $report);
             exit();
         }
 
@@ -81,7 +81,7 @@ try {
 
             $report = http_build_query($data);
 
-            header('Location: index.php?' . $report);
+            header('Location: index.html.php?' . $report);
             exit();
         }
     }

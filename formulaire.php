@@ -21,10 +21,10 @@ require 'base.php';
 
         <div class="row form-group">
             <div class="col-xs-12 col-md-offset-2 col-md-1">
-                <label for="nomParticipant">Civilité</label>
+                <label for="civilite">Civilité</label>
             </div>
             <div class="col-xs-12 col-md-2">
-                <select class="form-control">
+                <select id="civilite" name="civilite" class="form-control">
                     <option value="monsieur">M.</option>
                     <option value="madame">Mme</option>
                     <option value="mademoiselle">Mlle</option>
@@ -124,10 +124,29 @@ require 'base.php';
 
         <h2> Questions techniques</h2>
 
-        <div class="row">
+        <div class="row form-group">
             <div class="col-xs-12 col-md-offset-2 col-md-6">
-                <label for="coding">Vous venez avec votre propre polochon?</label>
+                <label for="polochon">Vous venez avec votre propre polochon?</label>
                 <input type="checkbox" id="polochon" name="polochon" value="polochon">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-xs-12 col-md-offset-2 col-md-6">
+                <label for="probNez">Avez vous des problèmes au nez? (risque de choc)</label>
+                <input type="checkbox" id="probNez" name="probNez" value="probNez">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-xs-12 col-md-offset-2 col-md-1">
+                <label for="soloEquipe">Jouer en </label>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <select id="soloEquipe" name="soloEquipe" class="form-control">
+                    <option value="solo">Solo</option>
+                    <option value="equipe">Equipe</option>
+                </select>
             </div>
         </div>
 

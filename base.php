@@ -26,15 +26,15 @@
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-inverse" id="mainNav">
     <div class="container-fluid">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">PolochWar</a>
+        <a class="navbar-brand js-scroll-trigger" href="index.html.php">PolochWar</a>
 
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <?php if ($homeActive == true){?>
-                    <li class="active"><a href="index.php">Home</a></li>
+                    <li class="active"><a href="index.html.php">Home</a></li>
                 <?php }
                 else{ ?>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="index.html.php">Home</a></li>
                 <?php } ?>
 
                 <?php if ($inscriptionActive == true){?>
