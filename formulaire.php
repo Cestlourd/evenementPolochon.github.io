@@ -13,7 +13,7 @@ require 'base.php';
 </head>
 <body>
 <div class="container backChampMars">
-    <form name="form_inscription" method="post" action="inscription.php">
+    <form name="form_inscription" method="post" action="test.php">
 
         <h1> Formulaire d'Inscription</h1>
 
@@ -97,7 +97,7 @@ require 'base.php';
                 <label for="adresseParticipant">Adresse</label>
             </div>
             <div class="col-xs-12 col-md-6">
-                <input type="email" class="form-control" name="adresseParticipant" placeholder="Adresse..."
+                <input type="text" class="form-control" name="adresseParticipant" placeholder="Adresse..."
                        value="<?php echo isset($_GET['adresse']) ? $_GET['adresse'] : '' ?>">
             </div>
         </div>
@@ -107,7 +107,7 @@ require 'base.php';
                 <label for="CPparticipant">Code Postal</label>
             </div>
             <div class="col-xs-12 col-md-2">
-                <input type="email" class="form-control" name="CPparticipant" placeholder="Code Postal..."
+                <input type="text" class="form-control" name="CPparticipant" placeholder="Code Postal..."
                        value="<?php echo isset($_GET['cp']) ? $_GET['cp'] : '' ?>">
             </div>
         </div>
@@ -117,7 +117,7 @@ require 'base.php';
                 <label for="villeParticipant">Ville</label>
             </div>
             <div class="col-xs-12 col-md-3">
-                <input type="email" class="form-control" name="villeParticipant" placeholder="Ville..."
+                <input type="text" class="form-control" name="villeParticipant" placeholder="Ville..."
                        value="<?php echo isset($_GET['ville']) ? $_GET['ville'] : '' ?>">
             </div>
         </div>
