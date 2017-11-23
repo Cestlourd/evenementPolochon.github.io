@@ -11,39 +11,68 @@ try {
             && $_POST['jourNaissanceParticipant'] != '' && $_POST['moisNaissanceParticipant'] != '' && $_POST['anneeNaissanceParticipant'] != '' && $_POST['adresseParticipant'] != ''
             && $_POST['CPparticipant'] != '' && $_POST['villeParticipant'] != '') {
 
-            echo "Tout est rempli";
+//            echo "Tout est rempli";
 
-//            $nom = $_POST['nomParticipant'];
-//            $prenom = $_POST['prenomParticipant'];
-//            $email = $_POST['emailParticipant'];
-//            $tel = $_POST['telephoneParticipant'];
-//            if (isset($_POST['polochon'])) {
-//                $polochon = 1;
-//            } else {
-//                $polochon = 0;
-//            }
-//
-//            echo $nom . "<br>" . $prenom . "<br>" . $email . "<br>" . $tel . "<br>" . $polochon . "<br>";
-//
-//            $sql = $bdd->prepare("INSERT INTO polochon (Nom, Prenom, Email, Telephone, Polochon) VALUES (:nom, :prenom, :email, :tel, :polochon)");
-//            $sql->bindParam(':nom', $nom);
-//            $sql->bindParam(':prenom', $prenom);
-//            $sql->bindParam(':email', $email);
-//            $sql->bindParam(':tel', $tel);
-//            $sql->bindParam(':polochon', $polochon);
-//            // use exec() because no results are returned
-//            $sql->execute();
-//            echo "New record created successfully";
+            $civilite = $_POST['civilite'];
+            $nom = $_POST['nomParticipant'];
+            $prenom = $_POST['prenomParticipant'];
+            $email = $_POST['emailParticipant'];
+            $tel = $_POST['telephoneParticipant'];
+            $naissance = $_POST['jourNaissanceParticipant'] ."/". $_POST['moisNaissanceParticipant'] ."/". $_POST['anneeNaissanceParticipant'] ;
+            $adresse = $_POST['adresseParticipant'];
+            $cp = $_POST['CPparticipant'];
+            $ville = $_POST['villeParticipant'];
+
+            if (isset($_POST['polochon'])) {
+                $polochon = 1;
+            } else {
+                $polochon = 0;
+            }
+
+            if (isset($_POST['probNez'])) {
+                $pbNez = 1;
+            } else {
+                $pbNez = 0;
+            }
+
+            $equipe = $_POST['soloEquipe'];
 
 
-//            $data = [
-//                "success" => "Vous êtes bien enregistré. A bientôt pour la bataille !"
-//            ];
+
 //
-//            $report = http_build_query($data);
-//
-//            header('Location: index.html.php?' . $report);
-//            exit();
+            echo $civilite . "<br>" . $nom . "<br>" . $prenom . "<br>" . $email . "<br>" . $tel . "<br>";
+            echo $naissance . "<br>" . $adresse . "<br>" . $cp . "<br>" . $ville . "<br>";
+            echo $polochon . "<br>" . $pbNez . "<br>" . $equipe . "<br>" ;
+
+            $sql = $bdd->prepare(
+                "INSERT INTO polochon (Civilite, Nom, Prenom, Naissance, Email, Telephone, Adresse, CP, Ville, Polochon, PbNez, Equipe) 
+                          VALUES (:civilite, :nom, :prenom, :naissance, :email, :tel, :adresse, :cp, :ville, :polochon, :pbNez, :equipe)");
+
+            $sql->bindParam(':civilite', $civilite);
+            $sql->bindParam(':nom', $nom);
+            $sql->bindParam(':prenom', $prenom);
+            $sql->bindParam(':naissance', $naissance);
+            $sql->bindParam(':email', $email);
+            $sql->bindParam(':tel', $tel);
+            $sql->bindParam(':adresse', $adresse);
+            $sql->bindParam(':cp', $cp);
+            $sql->bindParam(':ville', $ville);
+            $sql->bindParam(':polochon', $polochon);
+            $sql->bindParam(':pbNez', $pbNez);
+            $sql->bindParam(':equipe', $equipe);
+            // use exec() because no results are returned
+            $sql->execute();
+            echo "New record created successfully";
+
+
+            $data = [
+                "success" => "Vous êtes bien enregistré. A bientôt pour la bataille !"
+            ];
+
+            $report = http_build_query($data);
+
+            header('Location: formulaire.php?' . $report);
+            exit();
         }
 
 
@@ -91,7 +120,5 @@ try {
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
-
-//echo "Formulaire operationnel";
 
 ?>

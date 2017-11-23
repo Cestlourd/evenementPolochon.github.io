@@ -13,7 +13,15 @@ require 'base.php';
 </head>
 <body>
 <div class="container backChampMars">
-    <form name="form_inscription" method="post" action="test.php">
+
+    <?php
+    if (isset($_GET['success'])):?>
+            <div class="alert alert-success"><?php echo $_GET['success']; ?></div>
+        <?php
+    endif;
+    ?>
+
+    <form name="form_inscription" method="post" action="inscription.php">
 
         <h1> Formulaire d'Inscription</h1>
 
@@ -25,9 +33,9 @@ require 'base.php';
             </div>
             <div class="col-xs-12 col-md-2">
                 <select id="civilite" name="civilite" class="form-control">
-                    <option value="monsieur">M.</option>
-                    <option value="madame">Mme</option>
-                    <option value="mademoiselle">Mlle</option>
+                    <option value="Monsieur">M.</option>
+                    <option value="Madame">Mme</option>
+                    <option value="Mademoiselle">Mlle</option>
                 </select>
             </div>
         </div>
